@@ -41,7 +41,7 @@ section{
 .separator,
 p.active{
     z-index: 2;
-    color: #FFE548;
-    text-shadow:  0 0 20px #F58732;
+    color: #00e2ff;
+    text-shadow:  0 0 20px #bbf3ff;
 }
 
