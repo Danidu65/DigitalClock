@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="clock">
+    <section class="hour">
+        <div class="tens">
+            <p class="active">0</p>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+        </div>
+        <div class="ones">
+            <p>0</p>
+            <p class="active">1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+        </div>
+    </section>
+    <p class="separator">:</p>
+    <section class="min">
+        <div class="tens">
+            <p>0</p>
+            <p>1</p>
+            <p class="active">2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+        </div>
+        <div class="ones">
+            <p>0</p>
+            <p>1</p>
+            <p>2</p>
+            <p class="active">3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+        </div>
+    </section>
+    <p class="separator">:</p>
+    <section class="sec">
+        <div class="tens">
+            <p>0</p>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p class="active">4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+        </div>
+        <div class="ones">
+            <p>0</p>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p class="active">5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    const $ = (selector) => {
+        return document.querySelector(selector);
+    };
+    const $hour = $('.hour');
+    const $min = $('.min');
+    const $sec = $('.sec');
+
+    const getTime = () => {
+        const now = new Date();
+
+        return {
+            hour: String(now.getHours())
+                .padStart(2, '0'),
+            min: String(now.getMinutes())
+                .padStart(2, '0'),
+            sec: String(now.getSeconds())
+                .padStart(2, '0'),
+        };
+    }
+    const setDigits = (section,digit) =>{
+        const $tens = [
+            ...section. children [0] .children,
+        ];
+        const $ones = [
+            ...section. children [1]. children,
+        ];
+        $tens.forEach(
+            ($number) => $number.classList.remove('active'),
+        )
+        $tens[digit[0]].classList.add('active');
+
+        $ones.forEach(
+            ($number) => $number.classList.remove('active'),
+        )
+
+        $ones[digit[1]].classList.add('active');
+    }
+
+    const update = () => {
+        const time = getTime()
+        setDigits($hour, time.hour);
+        setDigits($min, time.min);
+        setDigits($sec, time.sec);
+    };
+
+    update();
+    setInterval(update,1000);
+</script>
+</body>
+</html>

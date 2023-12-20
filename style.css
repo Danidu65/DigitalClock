@@ -1,0 +1,47 @@
+@import url("https://fonts.googlepis.com/css?family=Lato:100");
+
+body{
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background: #191919;
+}
+.clock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato',sans-serif;
+    gap: 10px;
+}
+section{
+    width: 120px;
+    height: 120px;
+    display: flex;
+}
+.tens, .ones{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.tens p, .ones p{
+    position: absolute;
+    font-size: 6rem;
+}
+.separator{
+    font-size: 4rem;
+}
+.clock{
+    color: #191919;
+    z-index: -10;
+}
+
+.separator,
+p.active{
+    z-index: 2;
+    color: #FFE548;
+    text-shadow:  0 0 20px #F58732;
+}
+
